@@ -14,7 +14,7 @@ namespace Taschenrechner.Model.TokenApproach
             tokenRules.Add(new TokenRule(TokenType.Constant, "^e|^π"));
             tokenRules.Add(new TokenRule(TokenType.Function, "^sin|^cos|^exp"));
             tokenRules.Add(new TokenRule(TokenType.Number, "^\\d+,\\d+|^\\d+")); 
-            tokenRules.Add(new TokenRule(TokenType.Operator, "^\\+|^\\-|^×|^÷|^\\^"));
+            tokenRules.Add(new TokenRule(TokenType.Operator, "^\\+|^\\-|^\\×|^\\÷|^\\^"));
             tokenRules.Add(new TokenRule(TokenType.Parenthesis, "^\\(|^\\)"));
             tokenRules.Add(new TokenRule(TokenType.Space, "\\s"));
         }
@@ -33,39 +33,46 @@ namespace Taschenrechner.Model.TokenApproach
                 {
                     string val = match.Value;
                     string type = match.Type.ToString();
-                    if (type.Equals("Operation"))
+                    if (type.Equals("Operator"))
                     {
                         switch (val)
                         {
                             case "+":
                                 tokens.Add(new Token(match.Type, 2, -1, val));
+                                Console.WriteLine($"[TOKENIZER] TOKEN ADDED: {val} with PRECEDENCE: 2");
                                 tempString = match.TempString;
                                 break;
                             case "-":
                                 tokens.Add(new Token(match.Type, 2, -1, val));
+                                Console.WriteLine($"[TOKENIZER] TOKEN ADDED: {val} with PRECEDENCE: 2");
                                 tempString = match.TempString;
                                 break;
-                            case "*":
+                            case "×":
                                 tokens.Add(new Token(match.Type, 3, -1, val));
+                                Console.WriteLine($"[TOKENIZER] TOKEN ADDED: {val} with PRECEDENCE: 3");
                                 tempString = match.TempString;
                                 break;
-                            case "/":
+                            case "÷":
                                 tokens.Add(new Token(match.Type, 3, -1, val));
+                                Console.WriteLine($"[TOKENIZER] TOKEN ADDED: {val} with PRECEDENCE: 3");
                                 tempString = match.TempString;
                                 break;
                             case "^":
                                 tokens.Add(new Token(match.Type, 4, 1, val));
+                                Console.WriteLine($"[TOKENIZER] TOKEN ADDED: {val} with PRECEDENCE: 4");
                                 tempString = match.TempString;
                                 break;
                         }
                     }
                     else if(type.Equals("Space"))
                     {
+                        Console.WriteLine($"[TOKENIZER] TOKEN SKIPPED: {val}");
                         tempString = match.TempString;
                     }
                     else
                     {
                         tokens.Add(new Token(match.Type, 0, 0, val));
+                        Console.WriteLine($"[TOKENIZER] TOKEN ADDED: {val} with PRECEDENCE: 0");
                         tempString = match.TempString;
                     }
                 }

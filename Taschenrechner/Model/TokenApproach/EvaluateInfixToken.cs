@@ -111,6 +111,7 @@ namespace Taschenrechner.Model.TokenApproach
                 }
             }
             result += numberStack.Pop();
+            Console.WriteLine(result);
             return result;
         }
     }

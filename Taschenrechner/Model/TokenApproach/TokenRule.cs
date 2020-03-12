@@ -29,7 +29,7 @@ namespace Taschenrechner
                 if (match.Length != s.Length)
                 {
                     tempString = s.Substring(match.Length);
-                    Console.WriteLine($"[TOKENIZER] Remaining text: {tempString}");
+                    Console.WriteLine($"[TOKENMATCH] Remaining text: {tempString}");
                 }
 
                 return new TokenMatch()

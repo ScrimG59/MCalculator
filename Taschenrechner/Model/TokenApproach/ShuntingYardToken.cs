@@ -45,12 +45,14 @@ namespace Taschenrechner.Model.TokenApproach
                     Console.WriteLine($"[SHUNTING YARD]: Is a Operator: {token.Value}");
                     while (operatorStack.Count != 0 && (operatorStack.Peek().TokenType.Equals("Function") 
                         || operatorStack.Peek().Precedence > token.Precedence 
-                        || (operatorStack.Peek().Precedence == token.Precedence && token.Associativity == -1)
-                        && operatorStack.Peek().Value != "("))
+                        || (operatorStack.Peek().Precedence == token.Precedence && token.Associativity == -1))
+                        && operatorStack.Peek().Value != "(")
                     {
+                        Console.WriteLine($"[SHUNTING YARD]: Popping operator into output queue: {token.Value}");
                         result.Add(operatorStack.Pop());
                     }
 
+                    Console.WriteLine($"[SHUNTING YARD]: Pushing operator onto the operator stack: {token.Value}");
                     operatorStack.Push(token);
                 }
 
