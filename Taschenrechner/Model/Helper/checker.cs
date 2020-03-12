@@ -8,6 +8,7 @@ namespace Taschenrechner.Model.Helper
 {
     public class Checker
     {
+        // test
         int bracketLeft = 0;
         int bracketRight = 0;
         public bool checkEqualBrackets(string s)
