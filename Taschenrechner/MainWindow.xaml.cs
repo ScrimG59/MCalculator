@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using Taschenrechner.Model.Helper;
 using Taschenrechner.Model.TokenApproach;
 
 namespace Taschenrechner
@@ -10,12 +11,13 @@ namespace Taschenrechner
     {
         private string tempResult = "";
         private string result = "";
-        private List <Token> tempToken;
+        private List<Token> tempToken = new List<Token>();
         string substring = "";
         ShuntingYard sy = new ShuntingYard();
         EvaluateInfix ei = new EvaluateInfix();
         ShuntingYardToken syt = new ShuntingYardToken();
         EvaluateInfixToken eit = new EvaluateInfixToken();
+        Checker c = new Checker();
 
         public MainWindow()
         {
@@ -135,30 +137,36 @@ namespace Taschenrechner
         private void equals_Click(object sender, RoutedEventArgs e)
         {
             /*------------Comment this in and the code below out, to get the "token approach"-------------*/
-            
             tempResult = textbox.Text.ToString();
             Console.WriteLine($"[MainWindow] Content: {tempResult}");
-            textbox.Text = "";
-            result = "";
-            tempToken = syt.toPolishNotation(tempResult);
-            foreach (var token in tempToken) {
-                result += token.Value + " ";
-                Console.WriteLine($"[MainWindow] Token: {token.Value}");
+            if (c.checkEqualBrackets(tempResult))
+            {
+                textbox.Text = "";
+                result = "";
+                tempToken = syt.toPolishNotation(tempResult);
+                foreach (var token in tempToken)
+                {
+                    result += token.Value + " ";
+                    Console.WriteLine($"[MainWindow] Token: {token.Value}");
+                }
+                result = eit.evaluate(result);
+                tempToken.Clear();
+                textbox.Text = result;
             }
-            result = eit.evaluate(result);
-            tempToken.Clear();
-            textbox.Text = result;
 
             /*------------Comment this in and the code above out, to get the "string approach"-------------*/
 
             /*
             tempResult = textbox.Text.ToString();
             Console.WriteLine($"Inhalt: {tempResult}");
-            textbox.Text = "";
-            tempResult = sy.stringToInfix(tempResult);
-            result = ei.evaluate(tempResult);
-            Console.WriteLine($"Ergebnis: {result}");
-            textbox.Text = result;
+            if (c.checkEqualBrackets(tempResult))
+            {
+                textbox.Text = "";
+                tempResult = sy.stringToInfix(tempResult);
+                result = ei.evaluate(tempResult);
+                Console.WriteLine($"Ergebnis: {result}");
+                textbox.Text = result;
+            }
             */
         }
 
@@ -184,7 +192,7 @@ namespace Taschenrechner
 
         private void clear_Click(object sender, RoutedEventArgs e)
         {
-            if (tempToken.Count == 0)
+            if (tempToken.Count == 0 || tempToken == null)
             {
                 textbox.Text = "";
             }
@@ -232,7 +240,8 @@ namespace Taschenrechner
                && textbox.Text[textbox.Text.Length - 1] != '÷'
                && textbox.Text[textbox.Text.Length - 1] != '^'
                && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+               && textbox.Text[textbox.Text.Length - 1] != ',') 
+               && !c.checkEqualBrackets(textbox.Text))
             {
                 textbox.Text += ")";
             }
