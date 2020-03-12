@@ -18,7 +18,7 @@ namespace Taschenrechner
         
         public string evaluate(String s)
         {
-            Console.WriteLine($"Polish Notation: {s}");
+            Console.WriteLine($"[EVALUATION]: Polish Notation: {s}");
             result = "";
             int j;
             for(int i = 0; i < s.Length; i++)
@@ -34,7 +34,7 @@ namespace Taschenrechner
                 {
                     operand_2 += stack.Pop();
                     operand_1 = stack.Pop();
-                    Console.WriteLine($"Operand 1: {operand_1}\n Operand2: {operand_2}");  
+                    Console.WriteLine($"[EVALUATION]: Operand 1: {operand_1}\n Operand2: {operand_2}");  
 
                     switch (s[i])
                     {
@@ -64,7 +64,7 @@ namespace Taschenrechner
                             stack.Push(tempString);
                             break;
                         default:
-                            Console.WriteLine("FEHLER");
+                            Console.WriteLine("[EVALUATION]: ERROR");
                             break;
                     }
                     operand_1 = "";
@@ -86,10 +86,8 @@ namespace Taschenrechner
                             number += s[i + j];
                         }
                     }
-                    Console.WriteLine($"Die Nummer ist: {number}");
                     stack.Push(number);
                     number = "";
-                    Console.WriteLine($"J ist: {j}");
                     i = i + j;
                 }
 
@@ -105,12 +103,12 @@ namespace Taschenrechner
         {
             if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^')
             {
-                Console.WriteLine("Es ist ein Operator");
+                Console.WriteLine("[EVALUATION]: It's an operator.");
                 return true;
             }
             else
             {
-                Console.WriteLine("Es ist kein Operator");
+                Console.WriteLine("[EVALUATION]: It isn't an operator.");
                 return false;
             }
         }

@@ -18,10 +18,10 @@ namespace Taschenrechner
             // Check for invalid input like a single Character or no Character
             if(s.Length == 0|| s.Length == 1 || s.Length == 2)
             {
-                throw new Exception("INVALID INPUT");
+                throw new Exception("[SHUNTING YARD EXCEPTION]: INVALID INPUT");
             }
 
-            Console.WriteLine($"Der Input ist: {s}");
+            Console.WriteLine($"[SHUNTING YARD] Input: {s}");
 
             // Goes through every string character and check if it's a number or an operator
             for(int index = 0; index < s.Length; index++)
@@ -33,11 +33,11 @@ namespace Taschenrechner
                 // Otherwise just put the number into the output queue
                 if (Char.IsNumber(c) || c == ',')
                 {
-                    Console.WriteLine("Nummer: " + c);
+                    Console.WriteLine("[SHUNTING YARD] Number: " + c);
                     // To make sure that numbers with more than 1 digits are read properly
                     if ((index != 0 && index != 1) && (isOperator(s[index - 1]) || s[index-1] == '(' || s[index-1] == ')'))
                     {
-                        Console.WriteLine("Space hinzufügen");
+                        Console.WriteLine("[SHUNTING YARD] Space added");
                         outputQueue += " ";
                     }
                     outputQueue += c.ToString();
@@ -52,22 +52,19 @@ namespace Taschenrechner
                     {
                         if (stack.Count == 0)
                         {
-                            Console.WriteLine("Stack leer");
+                            Console.WriteLine("[SHUNTING YARD] Stack empty");
                             break;
                         }
-                        Console.WriteLine("Pops operators from the operator stack onto the output queue");
+                        Console.WriteLine("[SHUNTING YARD] Pops operators from the operator stack onto the output queue");
                         outputQueue += stack.Pop();
                     }
                     // Push the operator onto the operator stack
                     stack.Push(c.ToString());
-                    Console.WriteLine("Element wird auf Stack gepusht");
-                    Console.WriteLine("Stack-Top: " + stack.Peek());
                 }
 
                 // If the string charcter is an open bracket, it'll be pushed onto the operator stack
                 else if(c == '(')
                 {
-                    Console.WriteLine("Klammer auf: Wird auf den Stack gepusht");
                     stack.Push(c.ToString());
                 }
 
@@ -78,16 +75,14 @@ namespace Taschenrechner
                     while(stack.Peek().ToString() != "(")
                     {
                             outputQueue += stack.Pop();
-                            Console.WriteLine("Operator: " + stack.Peek() + "wird gestackt");
                     }
                     stack.Pop();
-                    Console.WriteLine($"Klammer auf poppen");
                 }
             }
             // At the end, just pop all the remaining characters from the operator stack into the output queue 
             while(stack.Count != 0)
             {
-                Console.WriteLine($"Stack poppen");
+                Console.WriteLine("[SHUNTING YARD]: Popping Stack");
                 outputQueue += stack.Pop();
             }
             s = "";
@@ -120,21 +115,21 @@ namespace Taschenrechner
             }
             else
             {
-                throw new Exception("NOT a constant!");
+                throw new Exception("[SHUNTING YARD EXCEPTION]NOT a constant!");
             }
         }
 
         // Helper method which checks if the given character is an operator
         private static bool isOperator (Char c)
         {
-            if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^')
+            if (c == '+' || c == '-' || c == '×' || c == '÷' || c == '^')
             {
-                Console.WriteLine("Es ist ein Operator");
+                Console.WriteLine("[SHUNTING YARD]: It's an operator.");
                 return true;
             }
             else
             {
-                Console.WriteLine("Es ist kein Operator");
+                Console.WriteLine("[Shunting Yard]: It isn't an operator.");
                 return false;
             }
         }
@@ -161,7 +156,7 @@ namespace Taschenrechner
                 {
                     if (a < b)
                     {
-                        Console.WriteLine("Haben größere Präzedenz");
+                        Console.WriteLine("[SHUNTING YARD]: Greater Precedence");
                         return true;
                     }
                 }
@@ -213,12 +208,12 @@ namespace Taschenrechner
                 {
                     if (a == b)
                     {
-                        Console.WriteLine("Haben gleiche Präzedenz");
+                        Console.WriteLine("[SHUNTING YARD]: Equal Precedence");
                         return true;
                     }
                 }
             }
-            Console.WriteLine("Haben nicht gleiche Präzedenz");
+            Console.WriteLine("[SHUNTING YARD]: Unequal Precedence");
             return false;
         }
     }
