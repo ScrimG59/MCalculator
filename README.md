@@ -9,4 +9,4 @@ Also implemented a token approach with a self-made tokenizer.
 |-------|
 |Log Function|
 |Square Root|
-|Differentiation between degree and radon|
+|Differentiation between degree and radiant
