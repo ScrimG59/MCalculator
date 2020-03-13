@@ -14,7 +14,17 @@
                 <GradientStop Color="#999999" Offset="2.5"></GradientStop>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button x:Name="one" Content="1" HorizontalAlignment="Left" Height="40" Margin="247,240,0,0" VerticalAlignment="Top" Width="60" Click="one_Click" Background="White"/>
+        <Button x:Name="one" Content="1" HorizontalAlignment="Left" Height="40" Margin="247,240,0,0" VerticalAlignment="Top" Width="60" Background="White" Click="one_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button x:Name="two" Content="2" HorizontalAlignment="Left" Height="40" Margin="327,240,0,0" VerticalAlignment="Top" Width="60" Click="two_Click" Background="White"/>
         <Button x:Name="three" Content="3" HorizontalAlignment="Left" Height="40" Margin="404,240,0,0" VerticalAlignment="Top" Width="60" Click="three_Click" Background="White"/>
         <Button x:Name="four" Content="4" HorizontalAlignment="Left" Height="40" Margin="247,180,0,0" VerticalAlignment="Top" Width="60" Click="four_Click" Background="White"/>
@@ -31,8 +41,8 @@
         <Button x:Name="division" Content="÷" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="588,322,0,0" Height="40" Click="division_Click" Background="Transparent"/>
         <Button x:Name="equals" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="404,322,0,0" Height="40" Click="equals_Click" Background="Transparent"/>
         <Button x:Name="comma" Content="," HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="247,322,0,0" Height="40" Click="comma_Click" Background="Transparent"/>
-        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="87,180,0,0" Height="40" Click="delete_Click" Background="Transparent" FontWeight="Black" FontStretch="ExtraExpanded" />
-        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="87,240,0,0" Height="40" Click="clear_Click" Background="Transparent" FontWeight="Black" FontStretch="ExtraExpanded"/>
+        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="670,180,0,0" Height="40" Click="delete_Click" Background="Transparent" FontWeight="Black" FontStretch="ExtraExpanded" />
+        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="670,240,0,0" Height="40" Click="clear_Click" Background="Transparent" FontWeight="Black" FontStretch="ExtraExpanded"/>
         <Button x:Name="parenleft" Content="(" HorizontalAlignment="Left" Margin="501,180,0,0" VerticalAlignment="Top" Width="60" Height="40" Click="parenleft_Click" Background="Transparent"/>
         <Button x:Name="parenright" Content=")" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="501,240,0,0" Height="40" Click="parenright_Click" Background="Transparent"/>
         <Button x:Name="power" Content="^" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="501,120,0,0" Height="40" Click="power_Click" Background="Transparent"/>
@@ -41,5 +51,10 @@
         <Button x:Name="exponential" Content="exp" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="158,240,0,0" Height="40" Click="exponential_Click" Background="Transparent"/>
         <Button x:Name="pi" Content="π" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="501,322,0,0" Height="40" Click="pi_Click" Background="Transparent"/>
         <Button x:Name="e" Content="e" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="158,322,0,0" Height="40" RenderTransformOrigin="0.478,0.431" Click="e_Click" Background="Transparent"/>
+        <Button x:Name="tangens" Content="tan" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,120,0,0" Height="40" Background="Transparent" Click="tangens_Click"/>
+        <Button x:Name="squareroot" Content="√" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,322,0,0" Height="40" Background="Transparent" Click="squareroot_Click"/>
+        <Button x:Name="logarithm10" Content="log" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,180,0,0" Height="40" Background="Transparent" Click="logarithm10_Click"/>
+        <Button x:Name="logarithmnaturalis" Content="ln" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,240,0,0" Height="40" Background="Transparent" Click="logarithmnaturalis_Click"/>
+
     </Grid>
 </Window>

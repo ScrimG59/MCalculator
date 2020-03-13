@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 using Taschenrechner.Model.Helper;
 using Taschenrechner.Model.TokenApproach;
 
@@ -171,17 +172,31 @@ namespace Taschenrechner
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
-        {   // TODO: Implement good delete function for cos, sin, exp
+        {   
             if (!(textbox.Text.Length > 0))
             {
                 return;
             }
             if (textbox.Text.Length >= 4 && 
                 (textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("cos(") 
-                || textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("sin(")))
+                || textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("sin(")
+                || textbox.Text.Substring(textbox.Text.Length -4, 4).Contains("log(")
+                || textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("tan(")))
             {
-                    substring = textbox.Text.Substring(0, textbox.Text.Length - 4);
-                    textbox.Text = substring;
+                substring = textbox.Text.Substring(0, textbox.Text.Length - 4);
+                textbox.Text = substring;
+            }
+
+            else if (textbox.Text.Length >= 3 && (textbox.Text.Substring(textbox.Text.Length - 3, 3).Contains("ln(")))
+            {
+                substring = textbox.Text.Substring(0, textbox.Text.Length - 3);
+                textbox.Text = substring;
+            }
+
+            else if(textbox.Text.Length >= 2 && (textbox.Text.Substring(textbox.Text.Length - 2, 2).Contains("√(")))
+            {
+                substring = textbox.Text.Substring(0, textbox.Text.Length - 2);
+                textbox.Text = substring;
             }
             else
             {
@@ -287,14 +302,24 @@ namespace Taschenrechner
             textbox.Text += "π";
         }
 
-        private void multi_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void tangens_Click(object sender, RoutedEventArgs e)
         {
-
+            textbox.Text += "tan(";
         }
 
-        private void multi_KeyDown_1(object sender, System.Windows.Input.KeyEventArgs e)
+        private void logarithm10_Click(object sender, RoutedEventArgs e)
         {
+            textbox.Text += "log(";
+        }
 
+        private void logarithmnaturalis_Click(object sender, RoutedEventArgs e)
+        {
+            textbox.Text += "ln(";
+        }
+
+        private void squareroot_Click(object sender, RoutedEventArgs e)
+        {
+            textbox.Text += "√(";
         }
     }
 }

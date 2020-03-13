@@ -93,18 +93,38 @@ namespace Taschenrechner.Model.TokenApproach
                     switch (val)
                     {
                         case ("sin"):
-                            Console.WriteLine("Sinus");
+                            Console.WriteLine("[EVALUATION]: Sinus");
                             tempDouble = Math.Sin(operand_1);
                             numberStack.Push(tempDouble);
                             break;
                         case ("cos"):
-                            Console.WriteLine("Cosinus");
+                            Console.WriteLine("[EVALUATION]: Cosinus");
                             tempDouble = Math.Cos(operand_1);
                             numberStack.Push(tempDouble);
                             break;
                         case ("exp"):
-                            Console.WriteLine("Exp");
+                            Console.WriteLine("[EVALUATION]: Exponential");
                             tempDouble = Math.Exp(operand_1);
+                            numberStack.Push(tempDouble);
+                            break;
+                        case ("tan"):
+                            Console.WriteLine("[EVALUATION]: Tangent");
+                            tempDouble = Math.Tan(operand_1);
+                            numberStack.Push(tempDouble);
+                            break;
+                        case ("log"):
+                            Console.WriteLine("[EVALUATION]: Logarithm (Base 10)");
+                            tempDouble = Math.Log10(operand_1);
+                            numberStack.Push(tempDouble);
+                            break;
+                        case ("ln"):
+                            Console.WriteLine("[EVALUATION]: Logarithm-Naturalis");
+                            tempDouble = Math.Log(operand_1);
+                            numberStack.Push(tempDouble);
+                            break;
+                        case ("√"):
+                            Console.WriteLine("[EVALUATION]: Square Root");
+                            tempDouble = Math.Sqrt(operand_1);
                             numberStack.Push(tempDouble);
                             break;
                     }
