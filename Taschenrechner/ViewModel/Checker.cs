@@ -10,7 +10,6 @@ namespace Taschenrechner.Model.Helper
     {
         int bracketLeft = 0;
         int bracketRight = 0;
-        string substring = "";
 
         public bool checkEqualBracketAmount(string s)
         {
@@ -75,7 +74,7 @@ namespace Taschenrechner.Model.Helper
             { return false; }
         }
 
-        public bool checkLeftParen(string s)
+        /*public bool checkLeftParen(string s)
         {
             if(s == ""
                || s[s.Length - 1] == '+'
@@ -89,7 +88,7 @@ namespace Taschenrechner.Model.Helper
 
             else
             { return false; }
-        }
+        }*/
 
         public bool checkRightParen(string s)
         {

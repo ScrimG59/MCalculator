@@ -154,7 +154,7 @@ namespace Taschenrechner
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
-        {   
+        {
             if (!(textbox.Text.Length > 0))
             {
                 return;
@@ -177,7 +177,11 @@ namespace Taschenrechner
 
         private void parenleft_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkLeftParen(textbox.Text))
+            if (f.autoCompleteMultiply(textbox.Text))
+            {
+                textbox.Text += "×(";
+            }
+            else
             {
                 textbox.Text += "(";
             }

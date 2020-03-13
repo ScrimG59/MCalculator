@@ -18,6 +18,7 @@ namespace Taschenrechner.ViewModel
         string substring = "";
         List<Token> tempToken = new List<Token>();
         string result = "";
+        int a = 2;
 
         public string setSubstringForDelete(string s)
         {
@@ -27,13 +28,13 @@ namespace Taschenrechner.ViewModel
                 return substring;
             }
 
-            else if (s.Length >= 3 && (s.Substring(s.Length - 3, 3).Contains("ln(")))
+            else if (c.checkDeleteForFunctionsThree(s))
             {
                 substring = s.Substring(0, s.Length - 3);
                 return substring;
             }
 
-            else if (s.Length >= 2 && (s.Substring(s.Length - 2, 2).Contains("√(")))
+            else if (c.checkDeleteForFunctionsTwo(s))
             {
                 substring = s.Substring(0, s.Length - 2);
                 return substring;
@@ -68,6 +69,16 @@ namespace Taschenrechner.ViewModel
             result = sy.stringToInfix(s);
             result = ei.evaluate(result);
             return result;
+        }
+
+        public bool autoCompleteMultiply(string s)
+        {
+            if (c.checkOperations(s))
+            {
+                return true;
+            }
+
+            else { return false; }
         }
     }
 }
