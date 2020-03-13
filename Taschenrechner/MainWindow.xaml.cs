@@ -5,20 +5,15 @@ using System.Windows;
 using System.Windows.Media;
 using Taschenrechner.Model.Helper;
 using Taschenrechner.Model.TokenApproach;
+using Taschenrechner.ViewModel;
 
 namespace Taschenrechner
 {
     public partial class MainWindow : Window
     {
         private string tempResult = "";
-        private string result = "";
-        private List<Token> tempToken = new List<Token>();
-        string substring = "";
-        ShuntingYard sy = new ShuntingYard();
-        EvaluateInfix ei = new EvaluateInfix();
-        ShuntingYardToken syt = new ShuntingYardToken();
-        EvaluateInfixToken eit = new EvaluateInfixToken();
         Checker c = new Checker();
+        Filler f = new Filler();
 
         public MainWindow()
         {
@@ -77,14 +72,7 @@ namespace Taschenrechner
 
         private void multi_Click(object sender, RoutedEventArgs e)
         {
-            if(textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+            if(c.checkOperations(textbox.Text))
             {
                 textbox.Text += "×";
             }
@@ -92,14 +80,7 @@ namespace Taschenrechner
 
         private void division_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+            if (c.checkOperations(textbox.Text))
             {
                 textbox.Text += "÷";
             }
@@ -107,14 +88,7 @@ namespace Taschenrechner
 
         private void minus_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+            if (c.checkOperations(textbox.Text))
             {
                 textbox.Text += "-";
             }
@@ -122,14 +96,7 @@ namespace Taschenrechner
 
         private void plus_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+            if (c.checkOperations(textbox.Text))
             {
                 textbox.Text += "+";
             }
@@ -138,9 +105,26 @@ namespace Taschenrechner
         private void equals_Click(object sender, RoutedEventArgs e)
         {
             /*------------Comment this in and the code below out, to get the "token approach"-------------*/
-            tempResult = textbox.Text.ToString();
-            Console.WriteLine($"[MainWindow] Content: {tempResult}");
-            if (c.checkEqualBrackets(tempResult))
+            if (c.checkEqualBracketAmount(textbox.Text))
+            {
+                tempResult = textbox.Text;
+                textbox.Text = "";
+                textbox.Text = f.calculateToken(tempResult);
+            }
+
+            /*------------Comment this in and the code above out, to get the "string approach"-------------*/
+
+            /*if (c.checkEqualBracketAmount(textbox.Text))
+            {
+                tempResult = textbox.Text;
+                textbox.Text = "";
+                textbox.Text = f.calculateString(tempResult);
+            }*/
+
+            /*-----------------------------------------------------------------------------------------------*/
+
+            /*tempResult = textbox.Text.ToString();
+            if (c.checkEqualBracketAmount(tempResult))
             {
                 textbox.Text = "";
                 result = "";
@@ -153,9 +137,7 @@ namespace Taschenrechner
                 result = eit.evaluate(result);
                 tempToken.Clear();
                 textbox.Text = result;
-            }
-
-            /*------------Comment this in and the code above out, to get the "string approach"-------------*/
+            }*/
 
             /*
             tempResult = textbox.Text.ToString();
@@ -177,57 +159,17 @@ namespace Taschenrechner
             {
                 return;
             }
-            if (textbox.Text.Length >= 4 && 
-                (textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("cos(") 
-                || textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("sin(")
-                || textbox.Text.Substring(textbox.Text.Length -4, 4).Contains("log(")
-                || textbox.Text.Substring(textbox.Text.Length - 4, 4).Contains("tan(")))
-            {
-                substring = textbox.Text.Substring(0, textbox.Text.Length - 4);
-                textbox.Text = substring;
-            }
-
-            else if (textbox.Text.Length >= 3 && (textbox.Text.Substring(textbox.Text.Length - 3, 3).Contains("ln(")))
-            {
-                substring = textbox.Text.Substring(0, textbox.Text.Length - 3);
-                textbox.Text = substring;
-            }
-
-            else if(textbox.Text.Length >= 2 && (textbox.Text.Substring(textbox.Text.Length - 2, 2).Contains("√(")))
-            {
-                substring = textbox.Text.Substring(0, textbox.Text.Length - 2);
-                textbox.Text = substring;
-            }
-            else
-            {
-                substring = textbox.Text.Substring(0, textbox.Text.Length - 1);
-                textbox.Text = substring;
-            }
+            else { textbox.Text = f.setSubstringForDelete(textbox.Text); }
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)
         {
-            if (tempToken.Count == 0 || tempToken == null)
-            {
                 textbox.Text = "";
-            }
-            else
-            {
-                tempToken.Clear();
-                textbox.Text = "";
-            }
-    }
+        }
 
         private void comma_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+            if (c.checkOperations(textbox.Text))
             {
                 textbox.Text += ",";
             }
@@ -235,12 +177,7 @@ namespace Taschenrechner
 
         private void parenleft_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text == "" 
-               || textbox.Text[textbox.Text.Length - 1] == '+'
-               || textbox.Text[textbox.Text.Length - 1] == '-'
-               || textbox.Text[textbox.Text.Length - 1] == '×'
-               || textbox.Text[textbox.Text.Length - 1] == '÷'
-               || textbox.Text[textbox.Text.Length - 1] == '^')
+            if (c.checkLeftParen(textbox.Text))
             {
                 textbox.Text += "(";
             }
@@ -248,15 +185,7 @@ namespace Taschenrechner
 
         private void parenright_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ',') 
-               && !c.checkEqualBrackets(textbox.Text))
+            if (c.checkRightParen(textbox.Text))
             {
                 textbox.Text += ")";
             }
@@ -264,14 +193,7 @@ namespace Taschenrechner
 
         private void power_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox.Text != ""
-               && (textbox.Text[textbox.Text.Length - 1] != '+'
-               && textbox.Text[textbox.Text.Length - 1] != '-'
-               && textbox.Text[textbox.Text.Length - 1] != '×'
-               && textbox.Text[textbox.Text.Length - 1] != '÷'
-               && textbox.Text[textbox.Text.Length - 1] != '^'
-               && textbox.Text[textbox.Text.Length - 1] != '('
-               && textbox.Text[textbox.Text.Length - 1] != ','))
+            if (c.checkOperations(textbox.Text))
             {
                 textbox.Text += "^";
             }

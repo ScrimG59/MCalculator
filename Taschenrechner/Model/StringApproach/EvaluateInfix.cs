@@ -48,12 +48,12 @@ namespace Taschenrechner
                             tempString = tempDouble.ToString();
                             stack.Push(tempString);
                             break;
-                        case '*':
+                        case '×':
                             tempDouble = Convert.ToDouble(operand_1) * Convert.ToDouble(operand_2);
                             tempString = tempDouble.ToString();
                             stack.Push(tempString);
                             break;
-                        case '/':
+                        case '÷':
                             tempDouble = Convert.ToDouble(operand_1) / Convert.ToDouble(operand_2);
                             tempString = tempDouble.ToString();
                             stack.Push(tempString);
@@ -101,7 +101,7 @@ namespace Taschenrechner
 
         private static bool isOperator(Char c)
         {
-            if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^')
+            if (c == '+' || c == '-' || c == '×' || c == '÷' || c == '^')
             {
                 Console.WriteLine("[EVALUATION]: It's an operator.");
                 return true;
