@@ -7,8 +7,8 @@ Also implemented a token approach with a self-made tokenizer.
 
 | TODOS |
 |-------|
-|Log and Tan Function|
-|Square Root|
+|Log and Tan Function ✓|
+|Square Root ✓|
 |Differentiation between degree and radiant|
 |MVVM - Pattern|
 |(Optional) History|
