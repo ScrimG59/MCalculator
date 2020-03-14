@@ -22,52 +22,96 @@ namespace Taschenrechner
 
         private void zero_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "0";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×0";
+            }
+
+            else if (textbox.Text == "") { textbox.Text += "0"; }
+            else if (!c.checkOperations(textbox.Text)) { textbox.Text += "0"; }
+            else if (c.checkZero(textbox.Text)) { textbox.Text += "0"; }
+            else {}
         }
 
         private void one_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "1";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×1";
+            }
+            else { textbox.Text += "1"; }
         }
 
         private void two_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "2";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×2";
+            }
+            else { textbox.Text += "2"; }
         }
 
         private void three_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "3";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×3";
+            }
+            else { textbox.Text += "3"; }
         }
 
         private void four_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "4";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×4";
+            }
+            else { textbox.Text += "4"; }
         }
 
         private void five_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "5";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×5";
+            }
+            else { textbox.Text += "5"; }
         }
 
         private void six_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "6";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×6";
+            }
+            else { textbox.Text += "6"; }
         }
 
         private void seven_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "7";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×7";
+            }
+            else { textbox.Text += "7"; }
         }
 
         private void eight_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "8";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×8";
+            }
+            else { textbox.Text += "8"; }
         }
 
         private void nine_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "9";
+            if (c.checkNumbersForAutoComplete(textbox.Text))
+            {
+                textbox.Text += "×9";
+            }
+            else { textbox.Text += "9"; }
         }
 
         private void multi_Click(object sender, RoutedEventArgs e)
@@ -177,7 +221,7 @@ namespace Taschenrechner
 
         private void parenleft_Click(object sender, RoutedEventArgs e)
         {
-            if (f.autoCompleteMultiply(textbox.Text))
+            if (c.autoCompleteMultiply(textbox.Text))
             {
                 textbox.Text += "×(";
             }

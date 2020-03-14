@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Taschenrechner.Model.Helper;
 using Taschenrechner.Model.TokenApproach;
 
 namespace Taschenrechner.ViewModel
 {
+
+    /// <summary>
+    /// This class fills the textblock with characters
+    /// </summary>
     public class Filler
     {
         Checker c = new Checker();
@@ -18,7 +19,6 @@ namespace Taschenrechner.ViewModel
         string substring = "";
         List<Token> tempToken = new List<Token>();
         string result = "";
-        int a = 2;
 
         public string setSubstringForDelete(string s)
         {
@@ -69,16 +69,6 @@ namespace Taschenrechner.ViewModel
             result = sy.stringToInfix(s);
             result = ei.evaluate(result);
             return result;
-        }
-
-        public bool autoCompleteMultiply(string s)
-        {
-            if (c.checkOperations(s))
-            {
-                return true;
-            }
-
-            else { return false; }
         }
     }
 }
