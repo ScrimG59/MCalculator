@@ -22,128 +22,72 @@ namespace Taschenrechner
 
         private void zero_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×0";
-            }
-
-            else if (textbox.Text == "") { textbox.Text += "0"; }
-            else if (!c.checkOperations(textbox.Text)) { textbox.Text += "0"; }
-            else if (c.checkZero(textbox.Text)) { textbox.Text += "0"; }
-            else {}
+            textbox.Text += f.printZero(textbox.Text);
         }
 
         private void one_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×1";
-            }
-            else { textbox.Text += "1"; }
+            textbox.Text += f.printNumber(textbox.Text, 1);
         }
 
         private void two_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×2";
-            }
-            else { textbox.Text += "2"; }
+            textbox.Text += f.printNumber(textbox.Text, 2);
         }
 
         private void three_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×3";
-            }
-            else { textbox.Text += "3"; }
+            textbox.Text += f.printNumber(textbox.Text, 3);
         }
 
         private void four_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×4";
-            }
-            else { textbox.Text += "4"; }
+            textbox.Text += f.printNumber(textbox.Text, 4);
         }
 
         private void five_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×5";
-            }
-            else { textbox.Text += "5"; }
+            textbox.Text += f.printNumber(textbox.Text, 5);
         }
 
         private void six_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×6";
-            }
-            else { textbox.Text += "6"; }
+            textbox.Text += f.printNumber(textbox.Text, 6);
         }
 
         private void seven_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×7";
-            }
-            else { textbox.Text += "7"; }
+            textbox.Text += f.printNumber(textbox.Text, 7);
         }
 
         private void eight_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×8";
-            }
-            else { textbox.Text += "8"; }
+            textbox.Text += f.printNumber(textbox.Text, 8);
         }
 
         private void nine_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkNumbersForAutoComplete(textbox.Text))
-            {
-                textbox.Text += "×9";
-            }
-            else { textbox.Text += "9"; }
+            textbox.Text += f.printNumber(textbox.Text, 9);
         }
 
         private void multi_Click(object sender, RoutedEventArgs e)
         {
-            if(c.checkOperations(textbox.Text))
-            {
-                textbox.Text += "×";
-            }
+            textbox.Text += f.printOperator(textbox.Text, "×");
         }
 
         private void division_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkOperations(textbox.Text))
-            {
-                textbox.Text += "÷";
-            }
+            textbox.Text += f.printOperator(textbox.Text, "÷");
         }
 
         private void minus_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkOperations(textbox.Text))
-            {
-                textbox.Text += "-";
-            }
+            textbox.Text += f.printOperator(textbox.Text, "-");
         }
 
         private void plus_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkOperations(textbox.Text))
-            {
-                textbox.Text += "+";
-            }
+            textbox.Text += f.printOperator(textbox.Text, "+");
         }
 
         private void equals_Click(object sender, RoutedEventArgs e)
@@ -152,6 +96,7 @@ namespace Taschenrechner
             if (c.checkEqualBracketAmount(textbox.Text))
             {
                 tempResult = textbox.Text;
+                history.Content = textbox.Text;
                 textbox.Text = "";
                 textbox.Text = f.calculateToken(tempResult);
             }
@@ -177,89 +122,73 @@ namespace Taschenrechner
 
         private void clear_Click(object sender, RoutedEventArgs e)
         {
-                textbox.Text = "";
+            textbox.Text = "";
+            history.Content = "";
         }
 
         private void comma_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkOperations(textbox.Text) && c.checkForDuplicateComma(textbox.Text))
-            {
-                textbox.Text += ",";
-            }
-            else { }
+            textbox.Text += f.printComma(textbox.Text);
         }
 
         private void parenleft_Click(object sender, RoutedEventArgs e)
         {
-            if (c.autoCompleteMultiply(textbox.Text))
-            {
-                textbox.Text += "×(";
-            }
-            else
-            {
-                textbox.Text += "(";
-            }
+            textbox.Text += f.printLeftParen(textbox.Text);
         }
 
         private void parenright_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkRightParen(textbox.Text))
-            {
-                textbox.Text += ")";
-            }
+            textbox.Text += f.printRightParen(textbox.Text);
         }
 
         private void power_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkOperations(textbox.Text))
-            {
-                textbox.Text += "^";
-            }
+            textbox.Text += f.printOperator(textbox.Text, "^");
         }
 
         private void cosinus_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "cos(";
+            textbox.Text += f.printFunction(textbox.Text, "cos");
         }
 
         private void sinus_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "sin(";
+            textbox.Text += f.printFunction(textbox.Text, "sin");
         }
 
         private void exponential_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "e^";
+            textbox.Text += f.printFunction(textbox.Text, "exp");
         }
 
         private void e_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "e";
+            textbox.Text += f.printConstant(textbox.Text, "e");
         }
 
         private void pi_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "π";
+            textbox.Text += f.printConstant(textbox.Text, "pi");
         }
 
         private void tangens_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "tan(";
+            textbox.Text += f.printFunction(textbox.Text, "tan");
         }
 
         private void logarithm10_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "log(";
+            textbox.Text += f.printFunction(textbox.Text, "log");
         }
 
         private void logarithmnaturalis_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "ln(";
+            textbox.Text += f.printFunction(textbox.Text, "ln");
         }
 
         private void squareroot_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += "√(";
+            textbox.Text += f.printFunction(textbox.Text, "sqrt");
         }
     }
 }

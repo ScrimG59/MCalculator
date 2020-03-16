@@ -257,12 +257,26 @@ namespace Taschenrechner.Model.Helper
         {
             int comma = s.LastIndexOf(',');
 
-            if(comma != -1 && !checkForLastComma(s.Substring(comma)))
+            if(comma != -1 && !checkForLastOperation(s.Substring(comma)))
             {
                 return true;
             }
 
             else if(comma == -1) { return true; }
+
+            else { return false; }
+        }
+
+        public bool checkForLastNumber(string s)
+        {
+            if(s[s.Length-1] != '+'
+               && s[s.Length - 1] != '-'
+               && s[s.Length - 1] != '×'
+               && s[s.Length - 1] != '÷'
+               && s[s.Length - 1] != '^')
+            {
+                return true;
+            }
 
             else { return false; }
         }
