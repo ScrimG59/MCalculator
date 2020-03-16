@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Taschenrechner
 {
+    /// <summary>
+    /// Defines the various types that occur in mathematic calculations
+    /// </summary>
     public enum TokenType
     {
         Number,

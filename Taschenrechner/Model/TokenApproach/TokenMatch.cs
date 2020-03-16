@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Taschenrechner.Model
 {
+    /// <summary>
+    /// The token match class has the attribute "IsMatching" to determine on the main algorithm, 
+    /// if something matched a Tokentype or not.
+    /// TokenType and Value are self-explaining
+    /// TempString is just the remaining text, after something matched
+    /// </summary>
     public class TokenMatch
     {
         public bool IsMatching { get; set; }
