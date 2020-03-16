@@ -212,7 +212,7 @@ namespace Taschenrechner.Model.Helper
             int comma = s.LastIndexOf(',');
             Console.WriteLine($"[CHECKER]: Last Index of Comma is: {comma}");
 
-            if(comma != -1 && checkForLastComma(s.Substring(comma)))
+            if(comma != -1 && checkForLastOperation(s.Substring(comma)))
             {
                 Console.WriteLine("[CHECKZERO]: TRUE1");
                 return true;
@@ -225,11 +225,11 @@ namespace Taschenrechner.Model.Helper
 
 
         /// <summary>
-        /// Checks if there's a operation from the last comma and returns true if there isn't any
+        /// Checks if there's a operation from the last comma on and returns true if there isn't any
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public bool checkForLastComma(string s)
+        private bool checkForLastOperation(string s)
         {
             if (!s.Contains('+')
                 && !s.Contains('-')
@@ -239,13 +239,32 @@ namespace Taschenrechner.Model.Helper
                 && !s.Contains('(')
                 && !s.Contains(')'))
             {
-                Console.WriteLine("Keine Operationen nach dem Komma");
                 return true;
             }
 
             else {
-                Console.WriteLine("Operationen nach dem Komma");
                 return false; }
+        }
+
+        /// <summary>
+        /// Checks if the user can set another comma
+        /// PURPOSE: Without this method the user could set a number like "1,05086509,6568"
+        /// This method prevents the user from setting a second comma within one number
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool checkForDuplicateComma(string s)
+        {
+            int comma = s.LastIndexOf(',');
+
+            if(comma != -1 && !checkForLastComma(s.Substring(comma)))
+            {
+                return true;
+            }
+
+            else if(comma == -1) { return true; }
+
+            else { return false; }
         }
     }
 }

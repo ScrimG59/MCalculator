@@ -9,7 +9,7 @@ namespace Taschenrechner.ViewModel
     /// <summary>
     /// This class fills the textblock with characters
     /// </summary>
-    public class Filler
+    public class Printer
     {
         Checker c = new Checker();
         ShuntingYardToken syt = new ShuntingYardToken();

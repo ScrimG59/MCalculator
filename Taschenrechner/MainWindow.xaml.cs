@@ -13,7 +13,7 @@ namespace Taschenrechner
     {
         private string tempResult = "";
         Checker c = new Checker();
-        Filler f = new Filler();
+        Printer f = new Printer();
 
         public MainWindow()
         {
@@ -164,37 +164,6 @@ namespace Taschenrechner
                 textbox.Text = "";
                 textbox.Text = f.calculateString(tempResult);
             }*/
-
-            /*-----------------------------------------------------------------------------------------------*/
-
-            /*tempResult = textbox.Text.ToString();
-            if (c.checkEqualBracketAmount(tempResult))
-            {
-                textbox.Text = "";
-                result = "";
-                tempToken = syt.toPolishNotation(tempResult);
-                foreach (var token in tempToken)
-                {
-                    result += token.Value + " ";
-                    Console.WriteLine($"[MainWindow] Token: {token.Value}");
-                }
-                result = eit.evaluate(result);
-                tempToken.Clear();
-                textbox.Text = result;
-            }*/
-
-            /*
-            tempResult = textbox.Text.ToString();
-            Console.WriteLine($"Inhalt: {tempResult}");
-            if (c.checkEqualBrackets(tempResult))
-            {
-                textbox.Text = "";
-                tempResult = sy.stringToInfix(tempResult);
-                result = ei.evaluate(tempResult);
-                Console.WriteLine($"Ergebnis: {result}");
-                textbox.Text = result;
-            }
-            */
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
@@ -213,10 +182,11 @@ namespace Taschenrechner
 
         private void comma_Click(object sender, RoutedEventArgs e)
         {
-            if (c.checkOperations(textbox.Text))
+            if (c.checkOperations(textbox.Text) && c.checkForDuplicateComma(textbox.Text))
             {
                 textbox.Text += ",";
             }
+            else { }
         }
 
         private void parenleft_Click(object sender, RoutedEventArgs e)

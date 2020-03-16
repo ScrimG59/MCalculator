@@ -73,7 +73,7 @@
     <Compile Include="Model\TokenApproach\TokenRule.cs" />
     <Compile Include="Model\TokenApproach\TokenRuleList.cs" />
     <Compile Include="Model\TokenApproach\TokenType.cs" />
-    <Compile Include="ViewModel\Filler.cs" />
+    <Compile Include="ViewModel\Printer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
