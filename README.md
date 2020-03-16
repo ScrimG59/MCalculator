@@ -1,5 +1,5 @@
 # MCalculator
-My first approach of implementing a scientific calculator.
+My first approach to implement a scientific calculator.
 
 Implemented a string way to evaluate calculations but without functions.
 
