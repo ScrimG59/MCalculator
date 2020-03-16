@@ -318,7 +318,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a left bracket into the input textbox according to some rules
+        /// Prints a left parenthesis into the input textbox according to some rules
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -335,7 +335,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a right bracket into the input textbox according to some rules
+        /// Prints a right parenthesis into the input textbox according to some rules
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
