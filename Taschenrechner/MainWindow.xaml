@@ -55,7 +55,7 @@
         <Button x:Name="squareroot" Content="√" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,322,0,0" Height="40" Background="Transparent" Click="squareroot_Click"/>
         <Button x:Name="logarithm10" Content="log" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,180,0,0" Height="40" Background="Transparent" Click="logarithm10_Click"/>
         <Button x:Name="logarithmnaturalis" Content="ln" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,240,0,0" Height="40" Background="Transparent" Click="logarithmnaturalis_Click"/>
-        <Label x:Name="history" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,83,0,0" Width="655" Foreground="#686868" Height="29" FontFamily="helvetica" FontSize="15"/>
+        <Label x:Name="history" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,83,0,0" Width="655" Foreground="#686868" Height="29" FontFamily="helvetica" FontSize="20"/>
 
     </Grid>
 </Window>

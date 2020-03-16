@@ -113,9 +113,15 @@ namespace Taschenrechner
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            if (!(textbox.Text.Length > 0))
+            if (textbox.Text.Length == 0)
             {
+                history.Content = "";
                 return;
+            }
+            else if(textbox.Text.Length == 1)
+            {
+                history.Content = "";
+                textbox.Text = f.setSubstringForDelete(textbox.Text);
             }
             else { textbox.Text = f.setSubstringForDelete(textbox.Text); }
         }
