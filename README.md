@@ -10,5 +10,5 @@ Also implemented a token approach with a self-made tokenizer.
 |Log and Tan Function ✓|
 |Square Root ✓|
 |Differentiation between degree and radiant|
-|MVVM - Pattern|
+|MVVM - Pattern ✓ (Partially done)|
 |(Optional) History|
