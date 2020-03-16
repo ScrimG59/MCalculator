@@ -12,8 +12,8 @@ namespace Taschenrechner
     public partial class MainWindow : Window
     {
         private string tempResult = "";
-        Checker c = new Checker();
-        Printer f = new Printer();
+        private Checker c = new Checker();
+        private Printer f = new Printer();
 
         public MainWindow()
         {
