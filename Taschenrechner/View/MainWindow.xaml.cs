@@ -14,6 +14,7 @@ namespace Taschenrechner
         private string tempResult = "";
         private Checker c = new Checker();
         private Printer f = new Printer();
+        private string modeString = "radiant";
 
         public MainWindow()
         {
@@ -98,7 +99,7 @@ namespace Taschenrechner
                 tempResult = textbox.Text;
                 history.Content = textbox.Text;
                 textbox.Text = "";
-                textbox.Text = f.calculateToken(tempResult);
+                textbox.Text = f.calculateToken(tempResult, modeString);
             }
 
             /*------------Comment this in and the code above out, to get the "string approach"-------------*/
@@ -195,6 +196,22 @@ namespace Taschenrechner
         private void squareroot_Click(object sender, RoutedEventArgs e)
         {
             textbox.Text += f.printFunction(textbox.Text, "sqrt");
+        }
+
+        private void mode_Click(object sender, RoutedEventArgs e)
+        {
+            if (modeString.Equals("radiant"))
+            {
+                modeString = "degree";
+                degree.Foreground = new SolidColorBrush(Colors.Red);
+                radiant.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
+            }
+            else if(modeString.Equals("degree"))
+            {
+                modeString = "radiant";
+                degree.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
+                radiant.Foreground = new SolidColorBrush(Colors.Red);
+            }
         }
     }
 }

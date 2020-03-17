@@ -57,7 +57,7 @@ namespace Taschenrechner.ViewModel
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public string calculateToken(string s)
+        public string calculateToken(string s, string mode)
         {
             Console.WriteLine($"[FILLER]: Content: {s}");
 
@@ -70,7 +70,7 @@ namespace Taschenrechner.ViewModel
                 Console.WriteLine($"[FILLER]: Token: {token.Value}");
             }
 
-            result = eit.evaluate(result);
+            result = eit.evaluate(result, mode);
             tempToken.Clear();
             return result;
         }

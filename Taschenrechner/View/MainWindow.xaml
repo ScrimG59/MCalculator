@@ -56,6 +56,9 @@
         <Button x:Name="logarithm10" Content="log" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,180,0,0" Height="40" Background="Transparent" Click="logarithm10_Click"/>
         <Button x:Name="logarithmnaturalis" Content="ln" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="75,240,0,0" Height="40" Background="Transparent" Click="logarithmnaturalis_Click"/>
         <Label x:Name="history" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,71,0,0" Width="655" Foreground="#686868" Height="29" FontFamily="helvetica" FontSize="20"/>
+        <Label x:Name="radiant" Content="Radiant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="735,23,0,0" Background="Transparent" Foreground="Red" Height="21" FontFamily="helvetica" FontSize="10"/>
+        <Label x:Name="degree" Content="Degree" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="735,44,0,0" Height="24" Width="44" FontSize="10" FontFamily="helvetica" Foreground="#686868"/>
+        <Button x:Name="mode" Content="Mode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="670,120,0,0" Height="40" Background="Transparent" FontFamily="helvetica" FontWeight="Black" Click="mode_Click"/>
 
     </Grid>
 </Window>

@@ -16,13 +16,14 @@ namespace Taschenrechner.Model.TokenApproach
         string val = "";
         private double operand_2;
         private double tempDouble;
+        private Conversion c = new Conversion();
 
         /// <summary>
         /// Evaluates the polish notation the "ShuntingYardToken" did
         /// </summary>
         /// <param name="s">Polish notation as a string</param>
         /// <returns>The result of an calculation as a string</returns>
-        public string evaluate(string s)
+        public string evaluate(string s, string mode)
         {
             Console.WriteLine($"[EVALUATION]: Polish Notation: {s}");
             tokens.Clear();
@@ -93,14 +94,33 @@ namespace Taschenrechner.Model.TokenApproach
                     switch (val)
                     {
                         case ("sin"):
-                            Console.WriteLine("[EVALUATION]: Sinus");
-                            tempDouble = Math.Sin(operand_1);
-                            numberStack.Push(tempDouble);
+                            if (mode.Equals("radiant")) 
+                            {
+                                Console.WriteLine("[EVALUATION] Radiant: Sinus");
+                                tempDouble = Math.Sin(operand_1);
+                                numberStack.Push(tempDouble);
+                            }
+
+                            else {
+                                Console.WriteLine("[EVALUATION] Degree: Sinus");
+                                tempDouble = Math.Sin(c.degreeToRadiant(operand_1));
+                                numberStack.Push(tempDouble);
+                            }
                             break;
                         case ("cos"):
-                            Console.WriteLine("[EVALUATION]: Cosinus");
-                            tempDouble = Math.Cos(operand_1);
-                            numberStack.Push(tempDouble);
+                            if (mode.Equals("radiant"))
+                            {
+                                Console.WriteLine("[EVALUATION]: Cosinus");
+                                tempDouble = Math.Cos(operand_1);
+                                numberStack.Push(tempDouble);
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("[EVALUATION]: Cosinus");
+                                tempDouble = Math.Cos(c.degreeToRadiant(operand_1));
+                                numberStack.Push(tempDouble);
+                            }
                             break;
                         case ("exp"):
                             Console.WriteLine("[EVALUATION]: Exponential");
@@ -108,9 +128,19 @@ namespace Taschenrechner.Model.TokenApproach
                             numberStack.Push(tempDouble);
                             break;
                         case ("tan"):
-                            Console.WriteLine("[EVALUATION]: Tangent");
-                            tempDouble = Math.Tan(operand_1);
-                            numberStack.Push(tempDouble);
+                            if (mode.Equals("radiant"))
+                            {
+                                Console.WriteLine("[EVALUATION]: Tangent");
+                                tempDouble = Math.Tan(operand_1);
+                                numberStack.Push(tempDouble);
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("[EVALUATION]: Tangent");
+                                tempDouble = Math.Tan(c.degreeToRadiant(operand_1));
+                                numberStack.Push(tempDouble);
+                            }
                             break;
                         case ("log"):
                             Console.WriteLine("[EVALUATION]: Logarithm (Base 10)");

@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\TokenApproach\Conversion.cs" />
     <Compile Include="ViewModel\Checker.cs" />
     <Compile Include="Model\StringApproach\EvaluateInfix.cs" />
     <Compile Include="Model\StringApproach\ShuntingYard.cs" />
