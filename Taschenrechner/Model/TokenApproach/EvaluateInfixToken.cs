@@ -19,7 +19,7 @@ namespace Taschenrechner.Model.TokenApproach
         private Conversion c = new Conversion();
 
         /// <summary>
-        /// Evaluates the polish notation the "ShuntingYardToken" did
+        /// Evaluates the polish notation the "ShuntingYardToken" class did
         /// </summary>
         /// <param name="s">Polish notation as a string</param>
         /// <returns>The result of an calculation as a string</returns>
@@ -77,7 +77,7 @@ namespace Taschenrechner.Model.TokenApproach
 
                     if (token.Value.ToString().Equals("e"))
                     {
-                        numberStack.Push(Math.Exp(1));
+                        numberStack.Push(Math.E);
                     }
                     else
                     {
