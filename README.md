@@ -7,6 +7,6 @@ Also implemented a token approach with a self-made tokenizer.
 
 Done in WPF.
 
-|TODO|
+|TODOS|
 |----|
 |More functions like sinh, cosh etc.|
