@@ -6,3 +6,7 @@ Implemented a string way to evaluate calculations but without functions.
 Also implemented a token approach with a self-made tokenizer.
 
 Done in WPF.
+
+|TODO|
+|----|
+|More functions like sinh, cosh etc.|
