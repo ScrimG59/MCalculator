@@ -28,7 +28,12 @@ namespace Taschenrechner.ViewModel
         /// <returns></returns>
         public string setSubstringForDelete(string s)
         {
-            if (c.checkDeleteForFunctionsFour(s))
+            if (c.checkDeleteForFunctionFive(s))
+            {
+                substring = s.Substring(0, s.Length - 5);
+                return substring;
+            }
+            else if (c.checkDeleteForFunctionsFour(s))
             {
                 substring = s.Substring(0, s.Length - 4);
                 return substring;
@@ -276,18 +281,36 @@ namespace Taschenrechner.ViewModel
                         return "×sin(";
                     }
                     else { return "sin("; }
+                case "sinh":
+                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
+                    {
+                        return "×sinh(";
+                    }
+                    else { return "sinh("; }
                 case "cos":
                     if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
                     {
                         return "×cos(";
                     }
                     else { return "cos("; }
+                case "cosh":
+                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
+                    {
+                        return "×cosh(";
+                    }
+                    else { return "cosh("; }
                 case "tan":
                     if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
                     {
                         return "×tan(";
                     }
                     else { return "tan("; }
+                case "tanh":
+                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
+                    {
+                        return "×tanh(";
+                    }
+                    else { return "tanh("; }
                 case "exp":
                     if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
                     {

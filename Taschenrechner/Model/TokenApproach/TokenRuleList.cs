@@ -16,7 +16,7 @@ namespace Taschenrechner.Model.TokenApproach
         public TokenRuleList()
         {
             tokenRules.Add(new TokenRule(TokenType.Constant, "^e|^π"));
-            tokenRules.Add(new TokenRule(TokenType.Function, "^sin|^cos|^exp|^log|^tan|^ln|^√"));
+            tokenRules.Add(new TokenRule(TokenType.Function, "^sinh|^sin|^cosh|^cos|^exp|^log|^tanh|^tan|^ln|^√"));
             tokenRules.Add(new TokenRule(TokenType.Number, "^\\d+,\\d+|^\\d+")); 
             tokenRules.Add(new TokenRule(TokenType.Operator, "^\\+|^\\-|^\\×|^\\÷|^\\^"));
             tokenRules.Add(new TokenRule(TokenType.Parenthesis, "^\\(|^\\)"));

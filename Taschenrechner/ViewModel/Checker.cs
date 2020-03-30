@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Taschenrechner.Model.Helper
 {
+    /// <summary>
+    /// This class checks for several constraints
+    /// </summary>
     public class Checker
     {
         int bracketLeft = 0;
@@ -120,6 +123,25 @@ namespace Taschenrechner.Model.Helper
         }
 
         /// <summary>
+        /// It's a helper method for the delete-button
+        /// PURPOSE: The user doesn't want to delete each character of for instance "cosh".
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool checkDeleteForFunctionFive(string s)
+        {
+            if (s.Length >= 5 &&
+                (s.Substring(s.Length - 5, 5).Contains("cosh(")
+                || s.Substring(s.Length - 5, 5).Contains("sinh(")
+                || s.Substring(s.Length - 5, 5).Contains("tanh(")))
+            {
+                return true;
+            }
+
+            else { return false; }
+        }
+
+        /// <summary>
         /// It's a helper method for the delete-button.
         /// PURPOSE: The user doesn't want to delete each character of for instance "cos".
         /// </summary>
@@ -138,7 +160,6 @@ namespace Taschenrechner.Model.Helper
 
             else { return false; }
         }
-
 
         /// <summary>
         /// Same helper method but for function with 3 characters

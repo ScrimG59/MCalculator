@@ -100,12 +100,16 @@ namespace Taschenrechner.Model.TokenApproach
                                 tempDouble = Math.Sin(operand_1);
                                 numberStack.Push(tempDouble);
                             }
-
                             else {
                                 Console.WriteLine("[EVALUATION] Degree: Sinus");
                                 tempDouble = Math.Sin(c.degreeToRadiant(operand_1));
                                 numberStack.Push(tempDouble);
                             }
+                            break;
+                        case ("sinh"):
+                            Console.WriteLine("[EVALUATION] Radiant: SinusH");
+                            tempDouble = Math.Sinh(operand_1);
+                            numberStack.Push(tempDouble);
                             break;
                         case ("cos"):
                             if (mode.Equals("radiant"))
@@ -114,13 +118,17 @@ namespace Taschenrechner.Model.TokenApproach
                                 tempDouble = Math.Cos(operand_1);
                                 numberStack.Push(tempDouble);
                             }
-
                             else
                             {
                                 Console.WriteLine("[EVALUATION]: Cosinus");
                                 tempDouble = Math.Cos(c.degreeToRadiant(operand_1));
                                 numberStack.Push(tempDouble);
                             }
+                            break;
+                        case ("cosh"):
+                            Console.WriteLine("[EVALUATION]: CosinusH");
+                            tempDouble = Math.Cosh(operand_1);
+                            numberStack.Push(tempDouble);
                             break;
                         case ("exp"):
                             Console.WriteLine("[EVALUATION]: Exponential");
@@ -134,13 +142,17 @@ namespace Taschenrechner.Model.TokenApproach
                                 tempDouble = Math.Tan(operand_1);
                                 numberStack.Push(tempDouble);
                             }
-
                             else
                             {
                                 Console.WriteLine("[EVALUATION]: Tangent");
                                 tempDouble = Math.Tan(c.degreeToRadiant(operand_1));
                                 numberStack.Push(tempDouble);
                             }
+                            break;
+                        case ("tanh"):
+                            Console.WriteLine("[EVALUATION]: TangentH");
+                            tempDouble = Math.Tanh(operand_1);
+                            numberStack.Push(tempDouble);
                             break;
                         case ("log"):
                             Console.WriteLine("[EVALUATION]: Logarithm (Base 10)");

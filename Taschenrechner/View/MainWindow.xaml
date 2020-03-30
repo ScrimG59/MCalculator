@@ -775,7 +775,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="tangens" Content="tan" Grid.Row="2" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto">
+        <Button x:Name="tangens" Content="tan" Grid.Row="2" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" Click="tangens_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -894,6 +894,35 @@
             <Label x:Name="degree" Content="Degree" Margin="20 30 20 0" Height="24" Width="44" FontSize="10" FontFamily="helvetica" Foreground="#686868"/>
         </Viewbox>
         <Button x:Name="mode" Content="Mode" Grid.Row="2" Grid.Column="7" Margin="20 16 20 15" Height="auto" Width="auto" FontFamily="helvetica" Click="mode_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#333"/>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="11"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="switch" Content=" ⇄" Grid.Row="5" Grid.Column="7" Margin="20 16 20 15" Height="auto" Width="auto" FontFamily="helvetica" Click="switch_Click" >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>

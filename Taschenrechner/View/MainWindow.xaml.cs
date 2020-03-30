@@ -15,6 +15,7 @@ namespace Taschenrechner
         private Checker c = new Checker();
         private Printer f = new Printer();
         private string modeString = "radiant";
+        private bool switchMode = false;
 
         public MainWindow()
         {
@@ -155,12 +156,12 @@ namespace Taschenrechner
 
         private void cosinus_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += f.printFunction(textbox.Text, "cos");
+            _ = !switchMode ? textbox.Text += f.printFunction(textbox.Text, "cos") : textbox.Text += f.printFunction(textbox.Text, "cosh");
         }
 
         private void sinus_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += f.printFunction(textbox.Text, "sin");
+            _ = !switchMode ? textbox.Text += f.printFunction(textbox.Text, "sin") : textbox.Text += f.printFunction(textbox.Text, "sinh");
         }
 
         private void exponential_Click(object sender, RoutedEventArgs e)
@@ -180,7 +181,7 @@ namespace Taschenrechner
 
         private void tangens_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text += f.printFunction(textbox.Text, "tan");
+            _ = !switchMode ? textbox.Text += f.printFunction(textbox.Text, "tan") : textbox.Text += f.printFunction(textbox.Text, "tanh");
         }
 
         private void logarithm10_Click(object sender, RoutedEventArgs e)
@@ -211,6 +212,24 @@ namespace Taschenrechner
                 modeString = "radiant";
                 degree.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
                 radiant.Foreground = new SolidColorBrush(Colors.Red);
+            }
+        }
+
+        private void switch_Click(object sender, RoutedEventArgs e)
+        {
+            if (switchMode)
+            {
+                cosinus.Content = "cos";
+                sinus.Content = "sin";
+                tangens.Content = "tan";
+                switchMode = false;
+            }
+            else
+            {
+                cosinus.Content = "cosh";
+                sinus.Content = "sinh";
+                tangens.Content = "tanh";
+                switchMode = true;
             }
         }
     }
