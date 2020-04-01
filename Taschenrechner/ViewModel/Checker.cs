@@ -223,6 +223,37 @@ namespace Taschenrechner.Model.Helper
             else { return false; }
         }
 
+        public bool checkNumbersForAutoCompleteFunction(string s)
+        {
+            if(containsFunction(s) 
+                && (s[s.Length - 2] == 'n'
+                || s[s.Length - 2] == 's'
+                || s[s.Length - 2] == 'h'
+                || s[s.Length - 2] == 'g'
+                || s[s.Length - 2] == 'n'
+                || s[s.Length - 2] == '√'))
+            {
+                return false;
+            }
+            else { return true; }
+        }
+        public bool containsFunction(string s)
+        {
+            if(s.Contains("sin") 
+                || s.Contains("sinh") 
+                || s.Contains("cos") 
+                || s.Contains("cosh") 
+                || s.Contains("tan") 
+                || s.Contains("tanh") 
+                || s.Contains("log") 
+                || s.Contains("ln") 
+                || s.Contains("√"))
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
         /// <summary>
         /// Checks if there's a comma and if there is one, calls the helper-method below
         /// </summary>
@@ -288,6 +319,11 @@ namespace Taschenrechner.Model.Helper
             else { return false; }
         }
 
+        /// <summary>
+        /// Checks if there's not an operation on the second last position of the input string
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public bool checkForLastNumber(string s)
         {
             if(s[s.Length-1] != '+'
