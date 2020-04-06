@@ -24,6 +24,7 @@ namespace Taschenrechner.Model.TokenApproach
             tokens.Clear();
             operatorStack.Clear();
             tokens = trl.Tokenize(s);
+            result.Clear();
 
 
             foreach(var token in tokens)
