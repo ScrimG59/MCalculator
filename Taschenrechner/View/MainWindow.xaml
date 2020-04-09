@@ -6,16 +6,9 @@
         xmlns:local="clr-namespace:Taschenrechner"
         mc:Ignorable="d"
         Title="MCalculator" MinHeight="450" MinWidth="800" Height="450" Width="800"
-        ResizeMode="CanResize">
+        ResizeMode="CanResize"
+        KeyDown="Window_KeyDown">
     <Grid Background="#222">
-        <!---
-        <Grid.Background>
-            <LinearGradientBrush>
-                <GradientStop Color="#ffffff" Offset="0.2"></GradientStop>
-                <GradientStop Color="#999999" Offset="2.5"></GradientStop>
-            </LinearGradientBrush>
-        </Grid.Background>
-        -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -698,7 +691,7 @@
                 <TextBlock Margin="6">^</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="cosinus" Grid.Row="4" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" Click="cosinus_Click">
+        <Button x:Name="cosinus" Grid.Row="3" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="cosinus_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -729,7 +722,38 @@
                 <TextBlock Margin="9">cos</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="sinus" Grid.Row="4" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="sinus_Click">
+        <Button x:Name="cosinusH" Grid.Row="3" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="cosinusH_Click" Visibility="Hidden">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#333"/>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
+            <Viewbox StretchDirection="Both">
+                <TextBlock Margin="9">cosh</TextBlock>
+            </Viewbox>
+        </Button>
+        <Button x:Name="sinus" Grid.Row="2" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="sinus_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -760,7 +784,38 @@
                 <TextBlock Margin="9">sin</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="exponential" Grid.Row="2" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="exponential_Click">
+        <Button x:Name="sinusH" Grid.Row="2" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="sinusH_Click" Visibility="Hidden">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#333"/>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
+            <Viewbox StretchDirection="Both">
+                <TextBlock Margin="9">sinh</TextBlock>
+            </Viewbox>
+        </Button>
+        <Button x:Name="exponential" Grid.Row="4" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" Click="exponential_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -791,7 +846,7 @@
                 <TextBlock Margin="9">exp</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="pi" Grid.Row="5" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" Click="pi_Click">
+        <Button x:Name="pi" Grid.Row="5" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="pi_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -822,7 +877,7 @@
                 <TextBlock Margin="7">π</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="e" Grid.Row="5" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" RenderTransformOrigin="0.478,0.431" Click="e_Click">
+        <Button x:Name="e" Grid.Row="5" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" RenderTransformOrigin="0.478,0.431" Click="e_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -853,7 +908,7 @@
                 <TextBlock Margin="7">e</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="tangens" Grid.Row="2" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" Click="tangens_Click">
+        <Button x:Name="tangens" Grid.Row="4" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="tangens_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>
@@ -882,6 +937,37 @@
             </Button.Resources>
             <Viewbox StretchDirection="Both">
                 <TextBlock Margin="9">tan</TextBlock>
+            </Viewbox>
+        </Button>
+        <Button x:Name="tangensH" Grid.Row="4" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="tangensH_Click" Visibility="Hidden">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#333"/>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
+            <Viewbox StretchDirection="Both">
+                <TextBlock Margin="9">tanh</TextBlock>
             </Viewbox>
         </Button>
         <Button x:Name="squareroot" Grid.Row="5" Grid.Column="6" Margin="20 16 20 15" Height="auto" Width="auto" Click="squareroot_Click">
@@ -915,7 +1001,7 @@
                 <TextBlock Margin="7">√</TextBlock>
             </Viewbox>
         </Button>
-        <Button x:Name="logarithm10" Grid.Row="3" Grid.Column="0" Margin="20 16 20 15" Height="auto" Width="auto" Click="logarithm10_Click">
+        <Button x:Name="logarithm10" Grid.Row="2" Grid.Column="1" Margin="20 16 20 15" Height="auto" Width="auto" Click="logarithm10_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#333"/>

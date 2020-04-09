@@ -215,7 +215,7 @@ namespace Taschenrechner.Model.Helper
         /// <returns></returns>
         public bool checkNumbersForAutoComplete(string s)
         {
-            if(s != "" && s[s.Length-1] == ')')
+            if(s != "" && (s[s.Length-1] == ')' || s[s.Length-1] == 'e' || s[s.Length - 1] == 'π'))
             {
                 return true;
             }

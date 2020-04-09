@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media;
 using Taschenrechner.Model.Helper;
 using Taschenrechner.Model.TokenApproach;
 using Taschenrechner.ViewModel;
+using System.Windows.Input;
 
 namespace Taschenrechner
 {
@@ -23,7 +25,7 @@ namespace Taschenrechner
         }
 
         private void zero_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             textbox.Text += f.printZero(textbox.Text);
         }
 
@@ -156,12 +158,12 @@ namespace Taschenrechner
 
         private void cosinus_Click(object sender, RoutedEventArgs e)
         {
-            _ = !switchMode ? textbox.Text += f.printFunction(textbox.Text, "cos") : textbox.Text += f.printFunction(textbox.Text, "cosh");
+            textbox.Text += f.printFunction(textbox.Text, "cos");
         }
 
         private void sinus_Click(object sender, RoutedEventArgs e)
         {
-            _ = !switchMode ? textbox.Text += f.printFunction(textbox.Text, "sin") : textbox.Text += f.printFunction(textbox.Text, "sinh");
+            textbox.Text += f.printFunction(textbox.Text, "sin");
         }
 
         private void exponential_Click(object sender, RoutedEventArgs e)
@@ -181,7 +183,7 @@ namespace Taschenrechner
 
         private void tangens_Click(object sender, RoutedEventArgs e)
         {
-            _ = !switchMode ? textbox.Text += f.printFunction(textbox.Text, "tan") : textbox.Text += f.printFunction(textbox.Text, "tanh");
+            textbox.Text += f.printFunction(textbox.Text, "tan");
         }
 
         private void logarithm10_Click(object sender, RoutedEventArgs e)
@@ -205,12 +207,12 @@ namespace Taschenrechner
             {
                 modeString = "degree";
                 degree.Foreground = new SolidColorBrush(Colors.Red);
-                radiant.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
+                radiant.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
             }
             else if(modeString.Equals("degree"))
             {
                 modeString = "radiant";
-                degree.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
+                degree.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#686868"));
                 radiant.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
@@ -219,18 +221,142 @@ namespace Taschenrechner
         {
             if (switchMode)
             {
-                cosinus.Content = "cos";
-                sinus.Content = "sin";
-                tangens.Content = "tan";
+                cosinus.Visibility = Visibility.Visible;
+                sinus.Visibility = Visibility.Visible;
+                tangens.Visibility = Visibility.Visible;
+                cosinusH.Visibility = Visibility.Hidden;
+                sinusH.Visibility = Visibility.Hidden;
+                tangensH.Visibility = Visibility.Hidden;
                 switchMode = false;
             }
             else
             {
-                cosinus.Content = "cosh";
-                sinus.Content = "sinh";
-                tangens.Content = "tanh";
+                cosinus.Visibility = Visibility.Hidden;
+                sinus.Visibility = Visibility.Hidden;
+                tangens.Visibility = Visibility.Hidden;
+                cosinusH.Visibility = Visibility.Visible;
+                sinusH.Visibility = Visibility.Visible;
+                tangensH.Visibility = Visibility.Visible;
                 switchMode = true;
             }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key.ToString())
+            {
+                case "D1":
+                    one_Click(sender, e);
+                    break;
+                case "NumPad1":
+                    one_Click(sender, e);
+                    break;
+                case "D2":
+                    two_Click(sender, e);
+                    break;
+                case "NumPad2":
+                    two_Click(sender, e);
+                    break;
+                case "D3":
+                    three_Click(sender, e);
+                    break;
+                case "NumPad3":
+                    three_Click(sender, e);
+                    break;
+                case "D4":
+                    four_Click(sender, e);
+                    break;
+                case "NumPad4":
+                    four_Click(sender, e);
+                    break;
+                case "D5":
+                    five_Click(sender, e);
+                    break;
+                case "NumPad5":
+                    five_Click(sender, e);
+                    break;
+                case "D6":
+                    six_Click(sender, e);
+                    break;
+                case "NumPad6":
+                    six_Click(sender, e);
+                    break;
+                case "D7":
+                    seven_Click(sender, e);
+                    break;
+                case "NumPad7":
+                    seven_Click(sender, e);
+                    break;
+                case "D8":
+                    eight_Click(sender, e);
+                    break;
+                case "NumPad8":
+                    eight_Click(sender, e);
+                    break;
+                case "D9":
+                    nine_Click(sender, e);
+                    break;
+                case "NumPad9":
+                    nine_Click(sender, e);
+                    break;
+                case "D0":
+                    zero_Click(sender, e);
+                    break;
+                case "NumPad0":
+                    zero_Click(sender, e);
+                    break;
+                case "Decimal":
+                    comma_Click(sender, e);
+                    break;
+                case "Back":
+                    delete_Click(sender, e);
+                    break;
+                case "Delete":
+                    clear_Click(sender, e);
+                    break;
+                case "Add":
+                    plus_Click(sender, e);
+                    break;
+                case "Subtract":
+                    minus_Click(sender, e);
+                    break;
+                case "Multiply":
+                    multi_Click(sender, e);
+                    break;
+                case "Divide":
+                    division_Click(sender, e);
+                    break;
+                case "Up":
+                    mode_Click(sender, e);
+                    break;
+                case "Down":
+                    mode_Click(sender, e);
+                    break;
+                case "Right":
+                    switch_Click(sender, e);
+                    break;
+                case "Left":
+                    switch_Click(sender, e);
+                    break;
+                case "Return":
+                    equals_Click(sender, e);
+                    break;
+            }
+        }
+
+        private void cosinusH_Click(object sender, RoutedEventArgs e)
+        {
+            textbox.Text += f.printFunction(textbox.Text, "cosh");
+        }
+
+        private void sinusH_Click(object sender, RoutedEventArgs e)
+        {
+            textbox.Text += f.printFunction(textbox.Text, "sinh");
+        }
+
+        private void tangensH_Click(object sender, RoutedEventArgs e)
+        {
+            textbox.Text += f.printFunction(textbox.Text, "tanh");
         }
     }
 }
