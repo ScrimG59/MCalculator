@@ -48,17 +48,6 @@ namespace Taschenrechner.Model.Helper
         }
 
         /// <summary>
-        /// TODO
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public bool checkFunctions(string s)
-        {
-            // TODO: Implement
-            return true;
-        }
-
-        /// <summary>
         /// Checks if there's an operation at the last character.
         /// PURPOSE: We don't want any calculations like "5++5"
         /// </summary>
@@ -223,6 +212,11 @@ namespace Taschenrechner.Model.Helper
             else { return false; }
         }
 
+        /// <summary>
+        /// Checks if there's a function, so that when the user writes a function in a function, the "multiply autocomplete" doesn't get triggered
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public bool checkNumbersForAutoCompleteFunction(string s)
         {
             if(containsFunction(s) 
@@ -237,7 +231,13 @@ namespace Taschenrechner.Model.Helper
             }
             else { return true; }
         }
-        public bool containsFunction(string s)
+        
+        /// <summary>
+        /// It's a helper method for the "checkNumbersForAutoCompleteFunction"-method
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private bool containsFunction(string s)
         {
             if(s.Contains("sin") 
                 || s.Contains("sinh") 
@@ -282,6 +282,11 @@ namespace Taschenrechner.Model.Helper
                 return false; }
         }
 
+        /// <summary>
+        /// Helper method for "checkZero"-method
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         private char getStartingDigitOfNumber(string s)
         {
             int lastPlus = s.LastIndexOf('+');
@@ -386,21 +391,6 @@ namespace Taschenrechner.Model.Helper
                && s[s.Length - 1] != '×'
                && s[s.Length - 1] != '÷'
                && s[s.Length - 1] != '^')
-            {
-                return true;
-            }
-
-            else { return false; }
-        }
-
-        public bool checkForLastNumberForZero(string s)
-        {
-            if (s[s.Length - 1] != '+'
-               && s[s.Length - 1] != '-'
-               && s[s.Length - 1] != '×'
-               && s[s.Length - 1] != '÷'
-               && s[s.Length - 1] != '^'
-               && s[s.Length - 1] != '0') 
             {
                 return true;
             }

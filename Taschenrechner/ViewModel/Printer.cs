@@ -7,7 +7,7 @@ namespace Taschenrechner.ViewModel
 {
 
     /// <summary>
-    /// This class fills the textblock with characters
+    /// This class fills the textblock with characters to certain constraints defined in the Checker-class
     /// </summary>
     public class Printer
     {
@@ -21,7 +21,7 @@ namespace Taschenrechner.ViewModel
         string result = "";
 
         /// <summary>
-        /// Deletes the textbox text according to some rules
+        /// Deletes the textbox text according to certain constraints
         /// PURPOSE:If something gets deleted like "sin(", the user wants to get it deleted at once and not char per char
         /// </summary>
         /// <param name="s"></param>
@@ -95,7 +95,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a number into the input textbox according to some rules (except number 0)
+        /// Prints a number into the input textbox according to certain constraints (except number 0)
         /// </summary>
         /// <param name="s"></param>
         /// <param name="number"></param>
@@ -163,7 +163,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints the number zero with its according rules
+        /// Prints the number zero with its according constraints
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -184,7 +184,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints an operator into the input textbox according to some rules
+        /// Prints an operator into the input textbox according to certain constraints
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -228,7 +228,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a constant into the input textbox according to some rules
+        /// Prints a constant into the input textbox according to certain constraints
         /// </summary>
         /// <param name="s"></param>
         /// <param name="constant"></param>
@@ -255,7 +255,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a comma into the input textbox according to some rules
+        /// Prints a comma into the input textbox according to certain constraints
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -269,7 +269,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a function into the input textbox according to some rules
+        /// Prints a function into the input textbox according to certain constraints
         /// </summary>
         /// <param name="s"></param>
         /// <param name="func"></param>
@@ -344,7 +344,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a left parenthesis into the input textbox according to some rules
+        /// Prints a left parenthesis into the input textbox according to certain constraints
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -361,7 +361,7 @@ namespace Taschenrechner.ViewModel
         }
 
         /// <summary>
-        /// Prints a right parenthesis into the input textbox according to some rules
+        /// Prints a right parenthesis into the input textbox according to certain constraints
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
