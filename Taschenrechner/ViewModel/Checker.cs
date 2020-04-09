@@ -261,23 +261,78 @@ namespace Taschenrechner.Model.Helper
         /// <returns></returns>
         public bool checkZero(string s)
         {
-            int comma = s.LastIndexOf(',');
-            Console.WriteLine($"[CHECKER]: Last Index of Comma is: {comma}");
+            int lastComma = s.LastIndexOf(',');
+            Console.WriteLine($"[CHECKER]: Last Index of Comma is: {lastComma}");
 
-            if(comma != -1 && checkForLastOperation(s.Substring(comma)))
+            // allows the zeros after a comma
+            if(lastComma != -1 && checkForLastOperation(s.Substring(lastComma+1)))
             {
                 Console.WriteLine("[CHECKZERO]: TRUE1");
                 return true;
             }
+            // allows the zeros after digits other than zero itself
+            else if(lastComma == -1 && getStartingDigitOfNumber(s) != '0')
+            {
+                return true;
+            }
 
+            // catches non exisiting numbers like 0000,00
             else {
                 Console.WriteLine("[CHECKZERO]: FALSE");
                 return false; }
         }
 
+        private char getStartingDigitOfNumber(string s)
+        {
+            int lastPlus = s.LastIndexOf('+');
+            int lastMinus = s.LastIndexOf('-');
+            int lastMulti = s.LastIndexOf('×');
+            int lastDiv = s.LastIndexOf('÷');
+            int lastPower = s.LastIndexOf('^');
+            int lastLeftParen = s.LastIndexOf('(');
+            int lastRightParen = s.LastIndexOf(')');
+
+            if (checkForLastOperation(s))
+            {
+                return s[0];
+            }
+            else if (lastPlus != -1 && checkForLastOperation(s.Substring(lastPlus + 1)))
+            {
+                return s.Substring(lastPlus)[1];
+            }
+            else if (lastMinus != -1 && checkForLastOperation(s.Substring(lastMinus + 1)))
+            {
+                return s.Substring(lastMinus)[1];
+            }
+            else if (lastMulti != -1 && checkForLastOperation(s.Substring(lastMulti + 1)))
+            {
+                return s.Substring(lastMulti)[1];
+            }
+            else if (lastDiv != -1 && checkForLastOperation(s.Substring(lastDiv + 1)))
+            {
+                return s.Substring(lastDiv)[1];
+            }
+            else if (lastPower != -1 && checkForLastOperation(s.Substring(lastPower + 1)))
+            {
+                return s.Substring(lastPower)[1];
+            }
+            else if (lastLeftParen != -1 && checkForLastOperation(s.Substring(lastLeftParen + 1)))
+            {
+                return s.Substring(lastLeftParen)[1];
+            }
+            else if (lastLeftParen != -1 && checkForLastOperation(s.Substring(lastLeftParen + 1)))
+            {
+                return s.Substring(lastLeftParen)[1];
+            }
+            else
+            {
+                return '0';
+            }
+        }
+
 
         /// <summary>
-        /// Checks if there's a operation from the last comma on and returns true if there isn't any
+        /// Checks if there's a operation in the given string and returns true if there isn't any
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -331,6 +386,21 @@ namespace Taschenrechner.Model.Helper
                && s[s.Length - 1] != '×'
                && s[s.Length - 1] != '÷'
                && s[s.Length - 1] != '^')
+            {
+                return true;
+            }
+
+            else { return false; }
+        }
+
+        public bool checkForLastNumberForZero(string s)
+        {
+            if (s[s.Length - 1] != '+'
+               && s[s.Length - 1] != '-'
+               && s[s.Length - 1] != '×'
+               && s[s.Length - 1] != '÷'
+               && s[s.Length - 1] != '^'
+               && s[s.Length - 1] != '0') 
             {
                 return true;
             }

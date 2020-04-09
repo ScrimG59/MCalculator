@@ -341,6 +341,12 @@ namespace Taschenrechner
                 case "Return":
                     equals_Click(sender, e);
                     break;
+                case "Power":
+                    power_Click(sender, e);
+                    break;
+                case "LineFeed":
+                    power_Click(sender, e);
+                    break;
             }
         }
 

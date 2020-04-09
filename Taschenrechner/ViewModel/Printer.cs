@@ -174,8 +174,11 @@ namespace Taschenrechner.ViewModel
                 return "×0";
             }
 
+            // allows a zero right at the start
             else if (s == "") { return "0"; }
+            // allows a zero after an operator
             else if (!c.checkOperations(s)) { return "0"; }
+            // checks other constraints
             else if (c.checkZero(s)) { return "0"; }
             else { return ""; }
         }
