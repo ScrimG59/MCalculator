@@ -344,7 +344,7 @@ namespace Taschenrechner
                 case "Power":
                     power_Click(sender, e);
                     break;
-                case "LineFeed":
+                case "Oem5":
                     power_Click(sender, e);
                     break;
             }
