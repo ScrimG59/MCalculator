@@ -97,7 +97,7 @@ namespace Taschenrechner
         private void equals_Click(object sender, RoutedEventArgs e)
         {
             /*------------Comment this in and the code below out, to get the "token approach"-------------*/
-            if (c.checkEqualBracketAmount(textbox.Text))
+            if (c.checkEqualBracketAmount(textbox.Text) && textbox.Text != "" && c.checkForEquals(textbox.Text))
             {
                 tempResult = textbox.Text;
                 history.Content = textbox.Text;
@@ -243,6 +243,7 @@ namespace Taschenrechner
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            //MessageBox.Show(e.Key.ToString());
             switch (e.Key.ToString())
             {
                 case "D1":

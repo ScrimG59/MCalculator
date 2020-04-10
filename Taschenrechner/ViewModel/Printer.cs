@@ -238,13 +238,13 @@ namespace Taschenrechner.ViewModel
             switch (constant)
             {
                 case "e":
-                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
+                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s)))
                     {
                         return "×e";
                     }
                     else { return "e"; }
                 case "pi":
-                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s)))
+                    if (s != "" && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s)))
                     {
                         return "×π";
                     }
@@ -279,61 +279,61 @@ namespace Taschenrechner.ViewModel
             switch (func)
             {
                 case "sin":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×sin(";
                     }
                     else { return "sin("; }
                 case "sinh":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×sinh(";
                     }
                     else { return "sinh("; }
                 case "cos":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×cos(";
                     }
                     else { return "cos("; }
                 case "cosh":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×cosh(";
                     }
                     else { return "cosh("; }
                 case "tan":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×tan(";
                     }
                     else { return "tan("; }
                 case "tanh":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×tanh(";
                     }
                     else { return "tanh("; }
                 case "exp":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×e^";
                     }
                     else { return "e^"; }
                 case "log":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×log(";
                     }
                     else { return "log("; }
                 case "ln":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×ln(";
                     }
                     else { return "ln("; }
                 case "sqrt":
-                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumber(s))))
+                    if (s != "" && (c.checkNumbersForAutoCompleteFunction(s) && (c.checkNumbersForAutoComplete(s) || c.checkForLastNumberWithLeftParen(s))))
                     {
                         return "×√(";
                     }

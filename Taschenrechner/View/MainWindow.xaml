@@ -7,10 +7,8 @@
         mc:Ignorable="d"
         Title="MCalculator" MinHeight="450" MinWidth="800" Height="450" Width="800"
         ResizeMode="CanResize"
-        KeyDown="Window_KeyDown">
-    <!--<Window.Background>
-        <SolidColorBrush Opacity="0.95" Color="#222"></SolidColorBrush>
-    </Window.Background>-->
+        KeyDown="Window_KeyDown"
+        >
     <Grid Background="#222">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>

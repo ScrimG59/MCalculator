@@ -397,5 +397,38 @@ namespace Taschenrechner.Model.Helper
 
             else { return false; }
         }
+
+        /// <summary>
+        /// Checks if there's not an operation on the second last position of the input string (for functions)
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool checkForLastNumberWithLeftParen(string s)
+        {
+            if (s[s.Length - 1] != '+'
+               && s[s.Length - 1] != '-'
+               && s[s.Length - 1] != '×'
+               && s[s.Length - 1] != '÷'
+               && s[s.Length - 1] != '^'
+               && s[s.Length - 1] != '(')
+            {
+                return true;
+            }
+
+            else { return false; }
+        }
+
+        public bool checkForEquals(string s)
+        {
+            if(s[s.Length-1] != '+' 
+                && s[s.Length - 1] != '-' 
+                && s[s.Length - 1] != '×' 
+                && s[s.Length - 1] != '÷' 
+                && s[s.Length - 1] != '^')
+            {
+                return true;
+            }
+            else { return false; }
+        }
     }
 }
