@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Taschenrechner
+﻿namespace Taschenrechner.Logic.TokenApproach
 {
     /// <summary>
     /// Defines the various types that occur in mathematic calculations

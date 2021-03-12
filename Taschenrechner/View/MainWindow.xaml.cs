@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Media;
-using Taschenrechner.Model.Helper;
-using Taschenrechner.Model.TokenApproach;
+using Taschenrechner.Helper;
 using Taschenrechner.ViewModel;
 using System.Windows.Input;
 

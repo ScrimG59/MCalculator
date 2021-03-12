@@ -63,18 +63,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\TokenApproach\Conversion.cs" />
-    <Compile Include="ViewModel\Checker.cs" />
-    <Compile Include="Model\StringApproach\EvaluateInfix.cs" />
-    <Compile Include="Model\StringApproach\ShuntingYard.cs" />
-    <Compile Include="Model\TokenApproach\EvaluateInfixToken.cs" />
-    <Compile Include="Model\TokenApproach\ShuntingYardToken.cs" />
-    <Compile Include="Model\TokenApproach\Token.cs" />
-    <Compile Include="Model\TokenApproach\TokenMatch.cs" />
-    <Compile Include="Model\TokenApproach\TokenRule.cs" />
-    <Compile Include="Model\TokenApproach\TokenRuleList.cs" />
-    <Compile Include="Model\TokenApproach\TokenType.cs" />
-    <Compile Include="ViewModel\Printer.cs" />
+    <Compile Include="Helper\Conversion.cs" />
+    <Compile Include="Helper\Checker.cs" />
+    <Compile Include="Logic\StringApproach\EvaluateInfix.cs" />
+    <Compile Include="Logic\StringApproach\ShuntingYard.cs" />
+    <Compile Include="Logic\TokenApproach\EvaluateInfixToken.cs" />
+    <Compile Include="Logic\TokenApproach\ShuntingYardToken.cs" />
+    <Compile Include="Logic\TokenApproach\Token.cs" />
+    <Compile Include="Logic\TokenApproach\TokenMatch.cs" />
+    <Compile Include="Logic\TokenApproach\TokenRule.cs" />
+    <Compile Include="Logic\TokenApproach\TokenRuleList.cs" />
+    <Compile Include="Logic\TokenApproach\TokenType.cs" />
+    <Compile Include="Helper\Printer.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

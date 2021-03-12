@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Taschenrechner.Model.Helper;
-using Taschenrechner.Model.TokenApproach;
+using Taschenrechner.Helper;
+using Taschenrechner.Logic.StringApproach;
+using Taschenrechner.Logic.TokenApproach;
 
 namespace Taschenrechner.ViewModel
 {

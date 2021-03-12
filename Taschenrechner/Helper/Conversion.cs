@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Taschenrechner.Model.TokenApproach
+namespace Taschenrechner.Helper
 {
     public class Conversion
     {

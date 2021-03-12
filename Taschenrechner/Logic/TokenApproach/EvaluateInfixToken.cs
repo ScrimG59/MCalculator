@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Taschenrechner.Helper;
 
-namespace Taschenrechner.Model.TokenApproach
+namespace Taschenrechner.Logic.TokenApproach
 {
     public class EvaluateInfixToken
     {

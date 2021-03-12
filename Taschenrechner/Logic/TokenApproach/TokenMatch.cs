@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Taschenrechner.Model
+﻿namespace Taschenrechner.Logic.TokenApproach
 {
     /// <summary>
     /// The token match class has the attribute "IsMatching" to determine on the main algorithm, 

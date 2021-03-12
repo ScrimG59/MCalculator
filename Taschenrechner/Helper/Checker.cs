@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Taschenrechner.Model.Helper
+namespace Taschenrechner.Helper
 {
     /// <summary>
     /// This class checks for several constraints
