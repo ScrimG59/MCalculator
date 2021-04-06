@@ -15,12 +15,12 @@ namespace Taschenrechner.Logic.TokenApproach
         /// </summary>
         /// <param name="s">A normal calculation</param>
         /// <returns>A list of tokens in polish notation</returns>
-        public List<Token> toPolishNotation(string s)
+        public List<Token> toPolishNotation(string inputString)
         {
-            Console.WriteLine($"[SHUNTING YARD] Input String: {s}");
+            Console.WriteLine($"[SHUNTING YARD] Input String: {inputString}");
             tokens.Clear();
             operatorStack.Clear();
-            tokens = trl.Tokenize(s);
+            tokens = trl.Tokenize(inputString);
             result.Clear();
 
 
